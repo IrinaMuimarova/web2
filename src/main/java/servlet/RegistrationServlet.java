@@ -26,7 +26,7 @@ public class RegistrationServlet extends HttpServlet {
         User user = new User(userService.getMaxId().getAndIncrement(), req.getParameter("email"), req.getParameter("password"));
         Gson gson = new Gson();
         String json;
-        if (userService.addUser(user)){
+        if (userService.addUser(user)) {
             json = gson.toJson(user);
         } else {
             json = "Error";

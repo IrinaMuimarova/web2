@@ -12,8 +12,7 @@ import servlet.RegistrationServlet;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception{
-        UserService userService = UserService.getInstance();
+    public static void main(String[] args) throws Exception {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new ApiServlet()), "/api/*");
         context.addServlet(new ServletHolder(new RegistrationServlet()), "/register");
@@ -24,7 +23,6 @@ public class Main {
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{resource_handler, context});
-
 
 
         Server server = new Server(8080);

@@ -18,8 +18,9 @@ public class ApiServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = null;
         try {
-            id =  Long.parseLong(req.getParameter("id"));
-        } catch (NumberFormatException e) { }
+            id = Long.parseLong(req.getParameter("id"));
+        } catch (NumberFormatException e) {
+        }
         Gson gson = new Gson();
         String json = "";
 
@@ -64,8 +65,9 @@ public class ApiServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = null;
         try {
-            id =  Long.parseLong(req.getParameter("id"));
-        } catch (NumberFormatException e) { }
+            id = Long.parseLong(req.getParameter("id"));
+        } catch (NumberFormatException e) {
+        }
         if (req.getPathInfo().contains("auth")) {
             if (id == null) {
                 userService.logoutAllUsers();
