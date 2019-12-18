@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
         User user = new User(req.getParameter("email"), req.getParameter("password"));
         Gson gson = new Gson();
         String json;
-        if (!userService.isExistsThisUser(user) && !userService.authUser(user)) {
+        if (!userService.isExistsThisUser(user) || !userService.authUser(user)) {
             json = "E-mail or password is not correct";
         } else {
             json = gson.toJson(user);

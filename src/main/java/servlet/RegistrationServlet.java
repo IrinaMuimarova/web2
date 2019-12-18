@@ -23,7 +23,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = new User(userService.getMaxId().getAndIncrement(), req.getParameter("email"), req.getParameter("password"));
+        User user = new User(req.getParameter("email"), req.getParameter("password"));
         Gson gson = new Gson();
         String json;
         if (!userService.isExistsThisUser(user) && userService.addUser(user)) {
