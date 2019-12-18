@@ -39,13 +39,9 @@ public class UserService {
     }
 
     public boolean addUser(User user) {
-        boolean isExist = isExistsThisUser(user);
         user.setId(maxId.getAndIncrement());
-        if (!isExist) {
-            dataBase.put(user.getId(), user);
-            return true;
-        }
-        return false;
+        dataBase.put(user.getId(), user);
+        return true;
     }
 
     public void deleteAllUser() {
@@ -67,13 +63,10 @@ public class UserService {
     }
 
     public boolean authUser(User user) {
-        boolean isExist = isExistsThisUser(user);
-        if (isExist) {
-            User outBase = searchUser(user.getEmail());
-            if (outBase.getPassword().equals(user.getPassword())) {
-                authMap.put(outBase.getId(), outBase);
-                return true;
-            }
+        User outBase = searchUser(user.getEmail());
+        if (outBase.getPassword().equals(user.getPassword())) {
+            authMap.put(outBase.getId(), outBase);
+            return true;
         }
         return false;
     }
